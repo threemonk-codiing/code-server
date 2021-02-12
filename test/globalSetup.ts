@@ -12,7 +12,9 @@ module.exports = async () => {
   const context = await browser.newContext()
   const page = await context.newPage()
 
-  wtfnode.setup()
+  if (process.env.WTF_NODE) {
+    wtfnode.setup()
+  }
 
   await page.goto(CODE_SERVER_ADDRESS, { waitUntil: "domcontentloaded" })
   // Type in password
